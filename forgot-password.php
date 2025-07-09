@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_token->execute([$email, $reset_token, $reset_expires, $reset_token, $reset_expires]);
 
         // --- Simulasi Pengiriman Email (di sini Anda akan mengintegrasikan sistem email asli) ---
-        $reset_link = "http://localhost/Tugas%20Akhir/reset-password.php?token=" . $reset_token; // Ganti dengan path folder Anda
+        $reset_link = "http://mahligaiheritage/Tugas%20Akhir/reset-password.php?token=" . $reset_token; // Ganti dengan path folder Anda
 
         // Dalam lingkungan produksi, Anda akan mengirim email sungguhan.
         // Contoh sederhana (PHP mail() - perlu konfigurasi server):

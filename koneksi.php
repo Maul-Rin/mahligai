@@ -4,8 +4,8 @@ ob_start(); // Start output buffering at the very beginning
 // Database configuration
 $host = 'localhost';
 $username = 'root'; // Adjust to your database username
-$password = ''; // Adjust to your database password
-$database = 'mahligai_db';
+$password = '@kaesquare123'; // Adjust to your database password
+$database = 'projec15_mahligai_db';
 
 try {
     global $pdo; // Declare $pdo as global
