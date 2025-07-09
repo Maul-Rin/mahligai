@@ -1,0 +1,2150 @@
+/* ==========================================================================
+   Base Styles & Resets
+   ========================================================================== */
+
+* {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  color: #2b1e17;
+  background-color: #f8f1e7;
+  font-family: "Inter", sans-serif;
+}
+
+.layar-dalam {
+  width: 1280px;
+  max-width: 95%;
+  margin: auto;
+}
+
+.layar-penuh {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Custom Alert/Modal Styling
+   ========================================================================== */
+
+.custom-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-alert.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-alert .alert-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+  color: #5d4e37;
+  font-family: "Inter", sans-serif;
+  position: relative;
+}
+
+.custom-alert.show .alert-content {
+  transform: translateY(0);
+}
+
+.custom-alert p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #5d4e37;
+}
+
+.custom-alert .alert-close-btn {
+  background-color: #a0522d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-alert .alert-close-btn:hover {
+  background-color: #8b4513;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Navbar Styles
+   ========================================================================== */
+
+/* Navbar Lama (Untuk Index.php) */
+nav {
+  z-index: 1000;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 60px;
+  background-color: rgba(75, 46, 36, 0.95);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.5s ease;
+  border-bottom: 1px solid #b1b1b1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav .layar-dalam {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 30px;
+}
+
+/* Logo untuk Index.php Navbar */
+nav .logo-text {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.5s ease;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.2;
+}
+
+nav .logo-text:hover {
+  color: #f4d03f;
+}
+
+/* Menu Container (Index.php Mobile Only) */
+nav .menu {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 30px;
+}
+
+nav .menu ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+nav .menu ul li {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f4d03f;
+  text-decoration: none;
+}
+
+/* Search Box di Navbar (Disembunyikan) */
+.search-container {
+  display: none;
+}
+
+/* Auth Section (Index.php Desktop) */
+nav .auth-section {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 30px;
+}
+
+nav .login-link {
+  background-color: #a43d2c;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+nav .login-link:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Gaya untuk tombol Nama Pengguna ("Rem") di navbar Index.php (setelah login) */
+nav .user-name-button-dark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav .user-name-button-dark:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Gaya untuk tombol Logout di navbar Index.php (setelah login) */
+nav .logout-button-dark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #a43d2c;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav .logout-button-dark:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ikon di tombol desktop (user-name-button-dark dan logout-button-dark) */
+nav .auth-section .auth-icon {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+nav .auth-section .auth-text {
+  vertical-align: middle;
+}
+
+/* Mobile Controls Container (Index.php) */
+nav .mobile-controls {
+  display: none;
+  align-items: center;
+  gap: 15px;
+}
+
+nav .mobile-auth-btn {
+  display: flex;
+  align-items: center;
+}
+
+nav .mobile-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #a43d2c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+nav .mobile-login-btn:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+}
+
+nav .mobile-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #a43d2c;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+nav .mobile-logout-btn:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+}
+
+nav .auth-icon {
+  font-size: 12px;
+}
+
+nav .auth-text {
+  font-size: 11px;
+}
+
+/* Toggle Menu (Mobile) - Index.php */
+nav .tombol-menu {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+nav .tombol-menu .garis {
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+}
+
+nav .tombol-menu.active .garis:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+nav .tombol-menu.active .garis:nth-child(2) {
+  opacity: 0;
+}
+
+nav .tombol-menu.active .garis:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Navbar Baru (Untuk halaman kategori seperti gastronomi, kanal, candi) */
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.navbar .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Logo untuk .navbar */
+.navbar .logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #8b4513;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.navbar .logo:hover {
+  color: #a0522d;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar .nav-links a {
+  color: #2c1810;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.navbar .nav-links a:hover {
+  background: rgba(139, 69, 19, 0.1);
+  color: #8b4513;
+}
+
+/* Active links for category pages */
+.navbar .nav-links a.active-gastronomi,
+.navbar .nav-links a.active-kanal,
+.navbar .nav-links a.active-candi,
+.navbar .nav-links a.active-tiket,
+.navbar .nav-links a.active-kearifan {
+  background: white;
+  color: #a0522d;
+  border: 1px solid #a0522d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-links a.active-gastronomi:hover,
+.navbar .nav-links a.active-kanal:hover,
+.navbar .nav-links a.active-candi:hover,
+.navbar .nav-links a.active-tiket:hover,
+.navbar .nav-links a.active-kearifan:hover {
+  background: #fdfaf7;
+  color: #8b4513;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.navbar .user-name {
+  font-weight: 500;
+  color: #4b2e24;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Untuk ikon di user-name */
+.navbar .user-name .auth-icon {
+  font-size: 0.9rem;
+}
+
+.navbar .logout-btn {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(220, 53, 69, 0.3);
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* Untuk tombol login di .navbar */
+.navbar .login-btn-custom {
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  color: white;
+  box-shadow: 0 2px 10px rgba(139, 69, 19, 0.3);
+}
+
+.navbar .login-btn-custom:hover {
+  background: linear-gradient(135deg, #a0522d, #8b4513);
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+}
+
+/* ==========================================================================
+   Header & Intro Sections
+   ========================================================================== */
+
+/* Header Video (Hanya di index.php) */
+header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+  margin-top: 70px;
+}
+
+header video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+header .intro {
+  text-align: center;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+header .intro h3 {
+  font-size: 50px;
+  margin: 0;
+  margin-bottom: 25px;
+  font-family: "Playfair Display", serif;
+}
+
+/* General Section Styling */
+section {
+  padding: 60px 0;
+}
+
+section h3 {
+  font-size: 30px;
+  text-align: center;
+  color: #4b2e24;
+  font-family: "Playfair Display", serif;
+}
+
+section h3::after {
+  content: "";
+  display: block;
+  border-bottom: 4px solid #a43d2c;
+  width: 50px;
+  margin: 20px auto 0;
+}
+
+.ringkasan {
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+  color: #6a5c4c;
+  margin-top: 10px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Background Colors */
+.bg-putih {
+  background-color: #fdfaf7;
+}
+
+.bg-krem {
+  background-color: #f1e2d2;
+}
+
+/* General section spacing for better visual flow */
+.section-intro {
+  padding-top: 100px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.section-highlight {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* ==========================================================================
+   Search Bar Styles
+   ========================================================================== */
+
+/* Search Bar di Header (index.php) - TETAP UKURAN ASLI */
+.search-container-header {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 0;
+}
+
+.search-box-header {
+  padding: 12px 45px 12px 20px;
+  border: 2px solid #a0522d;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-header::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-header:focus {
+  outline: none;
+  border-color: #f4d03f;
+  box-shadow: 0 0 15px rgba(244, 208, 63, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-btn-header {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-header:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Bar di Halaman Gastronomi - UKURAN DIKURANGI */
+.search-container-gastronomi {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 35px;
+}
+
+.search-box-gastronomi {
+  padding: 8px 35px 8px 16px;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  background-color: #fff6ee;
+  color: #4b2e24;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-gastronomi::placeholder {
+  color: #6a5c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-gastronomi:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.4);
+  background-color: #fefcf9;
+}
+
+.search-btn-gastronomi {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-gastronomi:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Bar di Halaman Kanal - UKURAN DIKURANGI */
+.search-container-kanal {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 35px;
+}
+
+.search-box-kanal {
+  padding: 8px 35px 8px 16px;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  background-color: #fff6ee;
+  color: #4b2e24;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-kanal::placeholder {
+  color: #6a5c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-kanal:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.4);
+  background-color: #fefcf9;
+}
+
+.search-btn-kanal {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-kanal:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Bar di Halaman Candi - UKURAN DIKURANGI */
+.search-container-candi {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 35px;
+}
+
+.search-box-candi {
+  padding: 8px 35px 8px 16px;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  background-color: #fff6ee;
+  color: #4b2e24;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-candi::placeholder {
+  color: #6a5c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-candi:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.4);
+  background-color: #fefcf9;
+}
+
+.search-btn-candi {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-candi:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Bar di Halaman Kearifan Lokal - UKURAN DIKURANGI */
+.search-container-kearifan {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 35px;
+}
+
+.search-box-kearifan {
+  padding: 8px 40px 8px 16px;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  background-color: #fff6ee;
+  color: #4b2e24;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-kearifan::placeholder {
+  color: #6a5c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-kearifan:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.4);
+  background-color: #fefcf9;
+}
+
+.search-btn-kearifan {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-kearifan:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Bar di Halaman Tiket & UMKM - UKURAN DIKURANGI */
+.search-container-tiket {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 25px auto 35px;
+}
+
+.search-box-tiket {
+  padding: 8px 35px 8px 16px;
+  border: 2px solid #a0522d;
+  border-radius: 20px;
+  background-color: #fff6ee;
+  color: #4b2e24;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-tiket::placeholder {
+  color: #6a5c4c;
+  font-family: "Inter", sans-serif;
+}
+
+.search-box-tiket:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.4);
+  background-color: #fefcf9;
+}
+
+.search-btn-tiket {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #8a2be2;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn-tiket:hover {
+  color: #6a1ac1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ==========================================================================
+   Card/Item Styles (Gastronomi, Kanal, Candi, Kearifan, Sorotan)
+   ========================================================================== */
+
+/* General Grid for Interactive Content */
+.grid-gastronomi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.item-gastro {
+  background-color: #fff6ee;
+  border: 1px solid #c2a487;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.item-gastro:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.item-gastro-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.item-gastro img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.4s ease;
+}
+
+.item-gastro:hover img {
+  transform: scale(1.08);
+}
+
+.item-gastro h4 {
+  margin: 10px 0 10px;
+  color: #4b2e24;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.item-gastro p {
+  font-size: 15px;
+  color: #3e2e23;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+  min-height: 70px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Icon placeholder styling */
+.icon-placeholder {
+  font-size: 3rem;
+  color: #a43d2c;
+  margin-bottom: 1rem;
+}
+
+/* Price and button container (for .item-gastro and similar structures) */
+.price-and-button-container,
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+  gap: 10px;
+  width: 100%;
+}
+
+.price-display {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #a43d2c;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.details-text {
+  font-size: 0.9rem;
+  color: #6a5c4c;
+  font-style: italic;
+  margin-bottom: 5px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+/* Highlight styles for search results */
+.item-gastro.highlight-gastronomi {
+  box-shadow: 0 0 0 4px #f4d03f, 0 0 20px rgba(244, 208, 63, 0.8);
+  transform: translateY(-5px) scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+.item-gastro.highlight-kanal {
+  box-shadow: 0 0 0 4px #8a2be2, 0 0 20px rgba(138, 43, 226, 0.8);
+  transform: translateY(-5px) scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+.item-gastro.highlight-candi {
+  box-shadow: 0 0 0 4px #4caf50, 0 0 20px rgba(76, 175, 80, 0.8);
+  transform: translateY(-5px) scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+/* === Kanal Kuno Specific Styles (if different from .item-gastro) === */
+.kanal-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.kanal-item {
+  background-color: #fff6ee;
+  border: 1px solid #d2bfa5;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  flex: 1 1 calc(48% - 15px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+
+.kanal-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.kanal-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.kanal-item h4 {
+  color: #4b2e24;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.kanal-item p {
+  font-size: 15px;
+  color: #3e2e23;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+  min-height: 70px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Candi Kuno Specific Styles - DIPERBAIKI UNTUK 2 KOLOM SEJAJAR */
+.candi-flex-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+  align-items: stretch;
+}
+
+.candi-item {
+  background-color: #fff6ee;
+  border: 1px solid #d2bfa5;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 450px;
+}
+
+.candi-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.candi-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.candi-item h4 {
+  color: #4b2e24;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.candi-item p {
+  font-size: 15px;
+  color: #3e2e23;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+  min-height: 70px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Kearifan Lokal Specific Styles */
+.grid-kearifan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  align-items: stretch;
+}
+
+.item-kearifan {
+  background-color: #fff6ee;
+  border: 1px solid #d2bfa5;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+}
+
+.item-kearifan:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.item-kearifan img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.item-kearifan h4 {
+  color: #4b2e24;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.item-kearifan p {
+  font-size: 15px;
+  color: #3e2e23;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+  min-height: 70px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sorotan Tokoh Specific Styles */
+.grid-sorotan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  align-items: stretch;
+}
+
+.item-sorotan {
+  background-color: #fff6ee;
+  border: 1px solid #d2bfa5;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+}
+
+.item-sorotan:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.item-sorotan img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.item-sorotan h4 {
+  color: #4b2e24;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+.item-sorotan p {
+  font-size: 15px;
+  color: #3e2e23;
+  flex-grow: 1;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+  min-height: 60px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+
+/* Tombol "Baca Selengkapnya" */
+.tombol,
+.tombol-kanal,
+.tombol-candi {
+  background-color: #a43d2c;
+  color: #fff;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: block; /* Ubah ke block untuk kontrol lebih baik */
+  margin: 0 auto; /* Mengatur posisi ke tengah */
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  white-space: normal;
+  text-align: center;
+  width: auto;
+  min-width: 100px;
+  max-width: 180px;
+  overflow: hidden;
+}
+
+.tombol:hover,
+.tombol-kanal:hover,
+.tombol-candi:hover {
+  background-color: #822f22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Tombol "Pesan Tiket" di halaman Gastronomi */
+.tombol-pesan-gastro {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 14px;
+  background-color: #a43d2c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(164, 61, 44, 0.3);
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+}
+
+.tombol-pesan-gastro:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(164, 61, 44, 0.5);
+}
+
+/* Tombol "Pesan Tiket" di halaman Kanal Kuno */
+.tombol-pesan-kanal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 14px;
+  background-color: #a43d2c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(164, 61, 44, 0.3);
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+}
+
+.tombol-pesan-kanal:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(164, 61, 44, 0.5);
+}
+
+/* Tombol "Pesan Tiket" di halaman Candi */
+.tombol-pesan-candi {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 14px;
+  background-color: #a43d2c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(164, 61, 44, 0.3);
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+}
+
+.tombol-pesan-candi:hover {
+  background-color: #822f22;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(164, 61, 44, 0.5);
+}
+
+/* Tombol "Pesan Tiket" - STYLING MERAH BARU */
+.tombol-pesan-tiket {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+  white-space: nowrap;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  min-width: 100px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.tombol-pesan-tiket:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.tombol-pesan-tiket:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Tombol "Pesan UMKM" */
+.tombol-pesan-umkm {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+  white-space: nowrap;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  min-width: 100px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.tombol-pesan-umkm:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.tombol-pesan-umkm:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Tombol "Selengkapnya" */
+.selengkapnya {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.selengkapnya a {
+  display: block; /* Ubah ke block untuk kontrol lebih baik */
+  align-items: center;
+  justify-content: center;
+  background-color: #a43d2c;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  white-space: normal;
+  text-align: center;
+  width: auto;
+  min-width: 100px;
+  max-width: 180px;
+  margin: 0 auto; /* Mengatur posisi ke tengah */
+}
+
+.selengkapnya a:hover {
+  background-color: #822f22;
+  transform: translateY(-2px);
+}
+
+/* Gaya untuk tombol Tonton Video */
+.tombol-tonton-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  background-color: #ff0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(255, 0, 0, 0.3);
+  font-family: "Inter", sans-serif;
+}
+
+.tombol-tonton-video:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+
+footer {
+  background-color: #2f1e14;
+  color: #fff6ee;
+  padding: 50px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+footer .layar-dalam {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+footer .layar-dalam div {
+  flex: 1 1 200px;
+}
+
+footer .layar-dalam h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffe2c4;
+  font-family: "Playfair Display", serif;
+}
+
+footer .layar-dalam a {
+  color: #ffe8d6;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+}
+
+footer .layar-dalam a:hover {
+  color: #ffb199;
+}
+
+footer .copyright {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #666;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+/* ==========================================================================
+   Animations & Interactivity
+   ========================================================================== */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.delay-05s {
+  animation-delay: 0.5s;
+}
+.delay-1s {
+  animation-delay: 1s;
+}
+.delay-12s {
+  animation-delay: 1.2s;
+}
+.delay-14s {
+  animation-delay: 1.4s;
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-slide-up.delay-05s {
+  animation-delay: 0.5s;
+}
+
+/* Pop Up Animation for Grid Items */
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-pop-up {
+  opacity: 0;
+  animation: popUp 0.6s ease-out forwards;
+}
+
+.animate-pop-up.delay-02s {
+  animation-delay: 0.2s;
+}
+.animate-pop-up.delay-04s {
+  animation-delay: 0.4s;
+}
+.animate-pop-up.delay-06s {
+  animation-delay: 0.6s;
+}
+.animate-pop-up.delay-08s {
+  animation-delay: 0.8s;
+}
+.animate-pop-up.delay-1s {
+  animation-delay: 1s;
+}
+.animate-pop-up.delay-12s {
+  animation-delay: 1.2s;
+}
+.animate-pop-up.delay-14s {
+  animation-delay: 1.4s;
+}
+
+/* Animation untuk loading */
+.item-gastro {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.item-gastro:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.item-gastro:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.item-gastro:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.item-gastro:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Mobile Hamburger Menu Styles - ENHANCED
+   ========================================================================== */
+
+/* Mobile menu styling untuk index.php */
+@media screen and (max-width: 991.98px) {
+  /* Navbar Index.php (mobile) */
+  nav .mobile-controls {
+    display: flex !important;
+  }
+
+  nav .desktop-auth {
+    display: none !important;
+  }
+
+  nav .menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: linear-gradient(
+      135deg,
+      rgba(75, 46, 36, 0.98) 0%,
+      rgba(101, 67, 33, 0.98) 100%
+    );
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px 20px;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+    margin-left: 0;
+    z-index: 999;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
+  }
+
+  nav .menu.menu-active {
+    transform: translateX(0);
+  }
+
+  nav .menu ul {
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 0;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  nav .menu ul li {
+    width: 100%;
+    margin: 8px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInMenu 0.5s ease forwards;
+  }
+
+  nav .menu ul li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  nav .menu ul li:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  nav .menu ul li:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  nav .menu ul li:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  nav .menu ul li:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  nav .menu ul li:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  nav .menu ul li a {
+    display: block;
+    width: 100%;
+    padding: 18px 25px;
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  nav .menu ul li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  nav .menu ul li a:hover::before {
+    left: 100%;
+  }
+
+  nav .menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(244, 208, 63, 0.6);
+    color: #f4d03f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  nav .menu ul li a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Navbar baru (.navbar) mobile styling - KEEP NAV LINKS VISIBLE */
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar .nav-container {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    font-size: 1.4rem;
+    order: 1;
+  }
+
+  /* KEEP NAV LINKS VISIBLE ON MOBILE */
+  .navbar .nav-links {
+    display: flex !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    transform: none !important;
+    transition: none !important;
+    overflow-y: visible !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+    gap: 0.8rem !important;
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .navbar .nav-links a {
+    width: auto !important;
+    max-width: none !important;
+    padding: 0.4rem 0.8rem !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #4b2e24 !important;
+    background: rgba(139, 69, 19, 0.08) !important;
+    border: 1px solid rgba(139, 69, 19, 0.15) !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    white-space: nowrap !important;
+  }
+
+  .navbar .nav-links a::before {
+    display: none !important;
+  }
+
+  .navbar .nav-links a:hover {
+    background: rgba(139, 69, 19, 0.15) !important;
+    border-color: rgba(160, 82, 45, 0.6) !important;
+    color: #a0522d !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .navbar .user-section {
+    gap: 0.5rem;
+    order: 3;
+    margin-top: 0.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar .user-name {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .navbar .logout-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Hide hamburger menu button for navbar baru since we keep nav links visible */
+  .navbar .tombol-menu {
+    display: none !important;
+  }
+}
+
+@keyframes slideInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  /* Penyesuaian untuk tablet dan mobile kecil */
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+
+  .navbar .nav-links {
+    gap: 0.6rem !important;
+  }
+
+  .navbar .nav-links a {
+    font-size: 13px !important;
+    padding: 0.3rem 0.6rem !important;
+  }
+
+  .search-container-gastronomi,
+  .search-container-kanal,
+  .search-container-candi,
+  .search-container-kearifan,
+  .search-container-tiket {
+    max-width: 280px;
+    margin: 20px auto 30px;
+  }
+
+  .search-box-gastronomi,
+  .search-box-kanal,
+  .search-box-candi,
+  .search-box-kearifan,
+  .search-box-tiket {
+    font-size: 13px;
+    padding: 7px 32px 7px 14px;
+  }
+
+  .search-btn-gastronomi,
+  .search-btn-kanal,
+  .search-btn-candi,
+  .search-btn-kearifan,
+  .search-btn-tiket {
+    font-size: 14px;
+    right: 8px;
+  }
+
+  /* Mobile menu adjustments */
+  nav .menu ul li a {
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+
+  /* Candi grid responsive - tetap 2 kolom di tablet */
+  .candi-flex-wrapper {
+    gap: 20px;
+  }
+
+  /* Tombol responsif */
+  .tombol,
+  .tombol-kanal,
+  .tombol-candi,
+  .selengkapnya a {
+    padding: 5px 10px; /* Lebih kecil lagi untuk mobile */
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Penyesuaian untuk mobile sangat kecil */
+  nav .layar-dalam {
+    padding: 0 15px;
+  }
+
+  .navbar {
+    padding: 0.8rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.2rem;
+  }
+
+  .navbar .nav-links {
+    gap: 0.4rem !important;
+    margin-top: 0.3rem;
+  }
+
+  .navbar .nav-links a {
+    font-size: 12px !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .search-container-header {
+    max-width: 300px;
+  }
+
+  .search-container-gastronomi,
+  .search-container-kanal,
+  .search-container-candi,
+  .search-container-kearifan,
+  .search-container-tiket {
+    max-width: 260px;
+  }
+
+  /* Grid adjustments */
+  .grid-gastronomi {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .kanal-wrapper {
+    flex-direction: column;
+  }
+
+  .kanal-item {
+    flex: 1 1 100%;
+  }
+
+  /* Candi grid - ubah jadi 1 kolom di mobile kecil */
+  .candi-flex-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .candi-item {
+    width: 100%;
+  }
+
+  /* Tombol responsif */
+  .tombol,
+  .tombol-kanal,
+  .tombol-candi,
+  .selengkapnya a {
+    padding: 4px 8px; /* Lebih kecil lagi untuk mobile kecil */
+    font-size: 13px;
+  }
+}
+
+/* Tambahan font dari external */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+/* Add to your existing style.css */
+
+/* Status Badge Styles (copied and adapted from analytics.php for consistency) */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* Prevent badge text from wrapping */
+    display: inline-block; /* Ensure padding and border work as expected */
+}
+
+.status-badge.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.status-confirmed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.status-processing {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-badge.status-completed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-badge.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-badge.status-expired {
+    background: #f5c6cb;
+    color: #721c24;
+}
+
+.status-badge.status-unknown {
+    background: #e2e3e5; /* Light grey for unknown status */
+    color: #495057;
+}
+
+/* Ensure the font awesome icons are displayed correctly in the nav bar */
+.user-section .fa-user-circle {
+    margin-right: 5px; /* Add some space between icon and text */
+}
+
+.admin-dashboard-link .fa-chart-line {
+    margin-right: 5px;
+}
+
+/* Adjust font for the plus-minus sign to be rendered correctly in tickets */
+.item-gastro p {
+    /* Existing styles */
+    font-family: "Inter", sans-serif; /* Ensure this is set */
+    /* Add specific font for symbols if needed, or ensure Inter supports them */
+}
