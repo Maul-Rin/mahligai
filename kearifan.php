@@ -151,10 +151,9 @@ if ($isLoggedIn) {
             font-size: 1.1rem;
         }
 
-        /* Styling untuk tombol "Pesan Disini" */
+        /* Styling untuk tombol "Pesan Disini" - UPDATED */
         .tombol-pesan-disini {
-            background: #dc3545;
-            /* Bootstrap's danger color */
+            background: linear-gradient(135deg, #dc3545, #c82333);
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -165,17 +164,19 @@ if ($isLoggedIn) {
             gap: 8px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-            /* Red shadow */
             margin-top: 20px;
-            /* Add some space above the button */
         }
 
         .tombol-pesan-disini:hover {
-            background: #c82333;
-            /* Darker red on hover */
+            background: linear-gradient(135deg, #c82333, #bd2130);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
             color: white;
+            text-decoration: none;
+        }
+
+        .tombol-pesan-disini i {
+            font-size: 1rem;
         }
 
         /* Badge untuk menandai konten khusus */
@@ -307,7 +308,15 @@ if ($isLoggedIn) {
                             Tikar lapik bayi disusun dari lapisan tikar pandan dan rumbai (pelisir), dilapisi kain merah dan biru sebagai simbol keberanian dan wawasan luas. Ukuran dan susunannya mencerminkan jenjang harapan hidup yang tinggi dan menjunjung adat.
                         </p>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="#contact" class="tombol-pesan-disini">Pesan Disini</a>
+                            <?php if ($isLoggedIn): ?>
+                                <a href="pesan-umkm.php?produk=tikar_lapik_bayi" class="tombol-pesan-disini">
+                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                                </a>
+                            <?php else: ?>
+                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=tikar_lapik_bayi'); ?>" class="tombol-pesan-disini">
+                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="item-gastro">
@@ -317,7 +326,15 @@ if ($isLoggedIn) {
                             Tempat sirih dan pinang berbentuk segi enam yang terbuat dari daun pandan. Fungsinya untuk menyimpan benda-benda tahan lama, mencerminkan makna ketahanan dan keluhuran budaya.
                         </p>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="#contact" class="tombol-pesan-disini">Pesan Disini</a>
+                            <?php if ($isLoggedIn): ?>
+                                <a href="pesan-umkm.php?produk=kembut_berbucu_enam" class="tombol-pesan-disini">
+                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                                </a>
+                            <?php else: ?>
+                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=kembut_berbucu_enam'); ?>" class="tombol-pesan-disini">
+                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="item-gastro">
@@ -327,7 +344,15 @@ if ($isLoggedIn) {
                             Tikar pandan memiliki berbagai macam motif yang melambangkan nilai estetika dan keterampilan tinggi pengrajinnya. Digunakan sebagai alas, dekorasi, atau simbol upacara adat.
                         </p>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="#contact" class="tombol-pesan-disini">Pesan Disini</a>
+                            <?php if ($isLoggedIn): ?>
+                                <a href="pesan-umkm.php?produk=tikar_pandan_bermotif" class="tombol-pesan-disini">
+                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                                </a>
+                            <?php else: ?>
+                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=tikar_pandan_bermotif'); ?>" class="tombol-pesan-disini">
+                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -346,7 +371,15 @@ if ($isLoggedIn) {
                             Madu Mahligai merupakan hasil peliharaan lebah lokal oleh masyarakat Danau Lamo yang dipanen secara tradisional tanpa merusak lingkungan. Proses pemanenan dilakukan secara turun-temurun dengan kearifan lokal, menjaga kemurnian madu sekaligus melestarikan habitat lebah dan keseimbangan alam sekitar.
                         </p>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="#contact" class="tombol-pesan-disini">Pesan Disini</a>
+                            <?php if ($isLoggedIn): ?>
+                                <a href="pesan-umkm.php?produk=madu_mahligai" class="tombol-pesan-disini">
+                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                                </a>
+                            <?php else: ?>
+                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=madu_mahligai'); ?>" class="tombol-pesan-disini">
+                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
