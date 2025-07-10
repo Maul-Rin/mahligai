@@ -3,7 +3,7 @@ ob_start(); // Start output buffering at the very beginning
 
 // Database configuration
 $host = 'localhost';
-$username = 'root'; // Adjust to your database username
+$username = 'projec15_root'; // Adjust to your database username
 $password = '@kaesquare123'; // Adjust to your database password
 $database = 'projec15_mahligai_db';
 
