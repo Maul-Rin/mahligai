@@ -79,14 +79,14 @@ if ($isLoggedIn) {
             margin-left: 30px;
         }
 
-        /* Pastikan hanya satu dashboard yang tampil */
+        /* Pastikan hanya satu dashboard yang tampil (untuk breakpoint mobile) */
         @media (max-width: 991px) {
             .admin-dashboard-btn {
                 display: none !important;
             }
 
             nav .auth-section {
-                display: none !important;
+                display: none !important; /* Sembunyikan auth-section desktop di mobile */
             }
         }
 
@@ -298,12 +298,13 @@ if ($isLoggedIn) {
                             <span class="auth-icon">📊</span>
                             <span class="auth-text">Dashboard</span>
                         </a>
+                        <?php else: /* User biasa login */ ?>
+                        <a href="logout.php" class="logout-button-dark" title="Logout">
+                            <span class="auth-icon">👤</span>
+                            <span class="auth-text">Logout</span>
+                        </a>
                     <?php endif; ?>
-                    <a href="logout.php" class="logout-button-dark" title="Logout">
-                        <span class="auth-icon">👤</span>
-                        <span class="auth-text">Logout</span>
-                    </a>
-                <?php else: ?>
+                <?php else: /* Belum login */ ?>
                     <a href="login.php" class="login-link">Login</a>
                 <?php endif; ?>
             </div>
@@ -494,7 +495,6 @@ if ($isLoggedIn) {
                         <li><a href="https://www.instagram.com/danaumahligai" target="_blank"><i class="fab fa-instagram"></i> danaumahligai</a></li>
                         <li><a href="https://www.instagram.com/mahligaibudaya_" target="_blank"><i class="fab fa-instagram"></i> mahligaibudaya_</a></li>
                         <li><a href="https://www.instagram.com/official_gambang" target="_blank"><i class="fab fa-instagram"></i> official_gambang</a></li>
-                        <li><a href="https://www.instagram.com/kampungtradisional.official" target="_blank"><i class="fab fa-instagram"></i> kampungtradisional.official</a></li>
                         <li><a href="https://www.facebook.com/mahligaiheritageofficial" target="_blank"><i class="fab fa-facebook"></i> Mahligai Heritage</a></li>
                     </ul>
                 </div>

@@ -27,8 +27,8 @@ if ($isLoggedIn) {
         .youtube-container {
             position: relative;
             width: 100%;
-            height: 200px;
-            margin-bottom: 15px;
+            height: 220px;
+            margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,89 +44,14 @@ if ($isLoggedIn) {
             border-radius: 8px;
         }
 
-        /* Styling untuk icon placeholder */
-        .icon-placeholder {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .icon-placeholder.tegak-tiang {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #cd853f 100%);
-            color: white;
-        }
-
-        .icon-placeholder.baselang {
-            background: linear-gradient(135deg, #2c5530 0%, #3d7c47 50%, #4a9d54 100%);
-            color: white;
-        }
-
-        .icon-placeholder:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .icon-placeholder .main-icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            opacity: 0.9;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .icon-placeholder .icon-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .icon-placeholder .icon-subtitle {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            font-style: italic;
-        }
-
-        /* Decorative elements */
-        .icon-placeholder::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
         /* Hover effect untuk video container */
-        .item-gastro:hover .youtube-container {
+        .item-kearifan:hover .youtube-container {
             transform: scale(1.02);
             transition: transform 0.4s ease;
         }
 
-        /* Styling untuk tombol tonton video yang sudah ada */
-        .tombol-tonton-video {
+        /* Tombol Tonton Video untuk Kearifan Lokal */
+        .tombol-tonton-video-kearifan {
             background: linear-gradient(135deg, #ff0000, #cc0000);
             color: white;
             padding: 10px 20px;
@@ -138,99 +63,52 @@ if ($isLoggedIn) {
             gap: 8px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            margin-top: 15px;
+            margin-left: 10px;
         }
 
-        .tombol-tonton-video:hover {
+        .tombol-tonton-video-kearifan:hover {
             background: linear-gradient(135deg, #cc0000, #990000);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
             color: white;
         }
 
-        .tombol-tonton-video i {
+        .tombol-tonton-video-kearifan i {
             font-size: 1.1rem;
         }
 
-        /* Styling untuk tombol "Pesan Disini" - UPDATED */
-        .tombol-pesan-disini {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+
+        /* Container untuk tombol-tombol */
+        .button-container {
+            text-align: center;
             margin-top: 20px;
-        }
-
-        .tombol-pesan-disini:hover {
-            background: linear-gradient(135deg, #c82333, #bd2130);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
-            color: white;
-            text-decoration: none;
-        }
-
-        .tombol-pesan-disini i {
-            font-size: 1rem;
-        }
-
-        /* Badge untuk menandai konten khusus */
-        .content-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #8b4513;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         @media (max-width: 768px) {
-
-            .youtube-container,
-            .icon-placeholder {
-                height: 180px;
+            .youtube-container {
+                height: 200px;
             }
 
-            .icon-placeholder .main-icon {
-                font-size: 3rem;
+            .button-container {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .icon-placeholder .icon-title {
-                font-size: 1rem;
-            }
-
-            .icon-placeholder .icon-subtitle {
-                font-size: 0.8rem;
+            .tombol-tonton-video-kearifan,
+            .tombol-pesan-gastro {
+                margin: 5px 0;
+                width: fit-content;
             }
         }
 
         @media (max-width: 480px) {
-
-            .youtube-container,
-            .icon-placeholder {
-                height: 160px;
-            }
-
-            .icon-placeholder .main-icon {
-                font-size: 2.5rem;
-            }
-
-            .icon-placeholder .icon-title {
-                font-size: 0.9rem;
-            }
-
-            .icon-placeholder .icon-subtitle {
-                font-size: 0.8rem;
+            .youtube-container {
+                height: 180px;
             }
         }
     </style>
@@ -247,7 +125,7 @@ if ($isLoggedIn) {
             </div>
             <div class="user-section">
                 <?php if ($isLoggedIn): ?>
-                    <span class="user-name">👋 <span class="auth-text"><?php echo htmlspecialchars($user['name']); ?></span></span>
+                    <span class="user-name">👋 <?php echo htmlspecialchars($user['name']); ?></span>
                     <a href="logout.php" class="logout-btn">Logout</a>
                 <?php else: ?>
                     <a href="login.php" class="logout-btn login-btn-custom">Login</a>
@@ -262,7 +140,7 @@ if ($isLoggedIn) {
                 <h3 class="animate-fade-in">Kearifan Lokal</h3>
                 <p class="ringkasan animate-fade-in delay-1s">Menjelajahi kekayaan tradisi, seni, dan budaya yang diwariskan dari generasi ke generasi di Danau Lamo.</p>
                 <div class="search-container-kearifan">
-                    <input type="text" placeholder="Cari musik, anyaman, atau tradisi..." class="search-box-kearifan" id="searchInputKearifan" onkeypress="handleSearchKearifan(event)" />
+                    <input type="text" placeholder="Cari seni atau tradisi..." class="search-box-kearifan" id="searchInputKearifan" onkeypress="handleSearchKearifan(event)" />
                     <button type="button" class="search-btn-kearifan" onclick="performSearchKearifanFromButton()">🔍</button>
                 </div>
             </div>
@@ -270,25 +148,29 @@ if ($isLoggedIn) {
 
         <section id="musik-tradisional" class="bg-krem section-highlight">
             <div class="layar-dalam">
-                <h3 class="animate-slide-up">Musik Tradisional: Gambangan</h3>
-                <p class="ringkasan animate-slide-up delay-05s">Dengarkan melodi Gambangan yang memukau, iringan setia dalam setiap upacara adat.</p>
+                <h3 class="animate-slide-up">Musik Tradisional</h3>
+                <p class="ringkasan animate-slide-up delay-05s">
+                    Musik Gambangan adalah salah satu warisan tak benda Desa Danau Lamo yang masih lestari hingga kini. Dimainkan dalam berbagai upacara adat, musik ini menjadi bagian penting dari ekspresi budaya masyarakat.
+                </p>
                 <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro" data-keywords="gambangan musik alat khas jambi tradisional upacara adat">
+                    <div class="item-gastro" data-keywords="gambangan musik seni tabuhan melayu">
                         <div class="item-gastro-inner animate-pop-up">
                             <div class="youtube-container">
                                 <iframe
-                                    src="https://www.youtube.com/embed/8-g0MR5Wc1w"
+                                    src="https://www.youtube.com/embed/your_video_id_here"
                                     title="Begambang Danau Lamo - Musik Tradisional Gambangan"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen>
                                 </iframe>
                             </div>
-                            <h4>Gambangan: Suara Warisan</h4>
+                            <h4>Gambangan</h4>
                             <p>
-                                Gambangan adalah alat musik khas Jambi yang digunakan dalam upacara adat dan pertunjukan rakyat untuk menyampaikan pesan dan nilai-nilai budaya. Suara khas dari alat musik ini membawa aura spiritual dan makna kebersamaan bagi masyarakat setempat.
+                                Gambangan adalah alat musik khas Jambi yang terbuat dari bambu atau kayu, menghasilkan melodi yang unik dan ritmis. Dimainkan dalam upacara adat, festival, dan acara komunitas, Gambangan menjadi simbol identitas budaya Melayu Jambi.
                             </p>
-                            <div style="text-align: center; margin-top: 20px;">
-                                <a href="https://youtu.be/8-g0MR5Wc1w?si=zq7kOyAQtTMvkIzz" target="_blank" class="tombol-tonton-video">Tonton di YouTube <i class="fab fa-youtube"></i></a>
+                            <div class="button-container">
+                                <a href="https://www.youtube.com/@mdwdesadanaulamo" target="_blank" class="tombol-tonton-video-kearifan">
+                                    <i class="fab fa-youtube"></i> Tonton Video
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -299,87 +181,65 @@ if ($isLoggedIn) {
         <section id="anyaman-lokal" class="bg-putih section-highlight">
             <div class="layar-dalam">
                 <h3 class="animate-slide-up">Produk Anyaman Lokal</h3>
-                <p class="ringkasan animate-slide-up delay-05s">Temukan keindahan dan kekuatan anyaman tradisional Danau Lamo, dibuat dengan tangan terampil.</p>
+                <p class="ringkasan animate-slide-up delay-05s">
+                    Temukan keindahan dan kekuatan anyaman tradisional Danau Lamo, dibuat dengan tangan terampil.
+                </p>
                 <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro">
-                        <img src="asset/tikar-bayi.jpg" alt="Anyaman Tikar" />
-                        <h4>Tikar Lapik Bayi</h4>
-                        <p>
-                            Tikar lapik bayi disusun dari lapisan tikar pandan dan rumbai (pelisir), dilapisi kain merah dan biru sebagai simbol keberanian dan wawasan luas. Ukuran dan susunannya mencerminkan jenjang harapan hidup yang tinggi dan menjunjung adat.
-                        </p>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <?php if ($isLoggedIn): ?>
-                                <a href="pesan-umkm.php?produk=tikar_lapik_bayi" class="tombol-pesan-disini">
-                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </a>
-                            <?php else: ?>
-                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=tikar_lapik_bayi'); ?>" class="tombol-pesan-disini">
-                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
-                                </a>
-                            <?php endif; ?>
+                    <div class="item-gastro" data-keywords="tikar lapik bayi anyaman pandan rumbai simbol">
+                        <div class="item-gastro-inner animate-pop-up">
+                            <img src="asset/tikar-bayi.jpg" alt="Tikar Lapik Bayi" />
+                            <h4>Tikar Lapik Bayi</h4>
+                            <p>
+                                Tikar lapik bayi disusun dari lapisan tikar pandan dan rumbai (pelisir), dilapisi kain merah dan biru sebagai simbol keberanian dan wawasan luas. Ukuran dan susunannya mencerminkan jenjang harapan hidup yang tinggi dan menjunjung adat.
+                            </p>
+                            <p><strong>Harga:</strong> Rp 40.000</p>
+                            <div class="button-container">
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-umkm.php?produk=tikar_lapik_bayi" class="tombol-pesan-umkm">Pesan Produk</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-umkm.php?produk=tikar_lapik_bayi" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="item-gastro">
-                        <img src="asset/kembut.jpg" alt="Anyaman Kembut" />
-                        <h4>Kembut Berbucu Enam</h4>
-                        <p>
-                            Tempat sirih dan pinang berbentuk segi enam yang terbuat dari daun pandan. Fungsinya untuk menyimpan benda-benda tahan lama, mencerminkan makna ketahanan dan keluhuran budaya.
-                        </p>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <?php if ($isLoggedIn): ?>
-                                <a href="pesan-umkm.php?produk=kembut_berbucu_enam" class="tombol-pesan-disini">
-                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </a>
-                            <?php else: ?>
-                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=kembut_berbucu_enam'); ?>" class="tombol-pesan-disini">
-                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
-                                </a>
-                            <?php endif; ?>
+                    <div class="item-gastro" data-keywords="kembut berbucu enam tempat sirih pinang pandan ketahanan">
+                        <div class="item-gastro-inner animate-pop-up delay-02s">
+                            <img src="asset/kembut.jpg" alt="Kembut Berbucu Enam" />
+                            <h4>Kembut Berbucu Enam</h4>
+                            <p>
+                                Tempat sirih dan pinang berbentuk segi enam yang terbuat dari daun pandan. Fungsinya untuk menyimpan benda-benda tahan lama, mencerminkan makna ketahanan dan keluhuran budaya.
+                            </p>
+                            <p><strong>Harga:</strong> Rp 30.000</p>
+                            <div class="button-container">
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-umkm.php?produk=kembut_berbucu_enam" class="tombol-pesan-umkm">Pesan Produk</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-umkm.php?produk=kembut_berbucu_enam" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="item-gastro">
-                        <img src="asset/tikar.jpg" alt="Motif Tikar Pandan" />
-                        <h4>Tikar Pandan Bermotif</h4>
-                        <p>
-                            Tikar pandan memiliki berbagai macam motif yang melambangkan nilai estetika dan keterampilan tinggi pengrajinnya. Digunakan sebagai alas, dekorasi, atau simbol upacara adat.
-                        </p>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <?php if ($isLoggedIn): ?>
-                                <a href="pesan-umkm.php?produk=tikar_pandan_bermotif" class="tombol-pesan-disini">
-                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </a>
-                            <?php else: ?>
-                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=tikar_pandan_bermotif'); ?>" class="tombol-pesan-disini">
-                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="produk-lokal" class="bg-putih section-highlight">
-            <div class="layar-dalam">
-                <h3 class="animate-slide-up">Produk Alam: Madu Mahligai</h3>
-                <p class="ringkasan animate-slide-up delay-05s">Hasil hutan asli Danau Lamo yang murni dan menyehatkan.</p>
-                <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro">
-                        <img src="asset/madu.jpg" alt="Madu Mahligai" />
-                        <h4>Madu Mahligai</h4>
-                        <p>
-                            Madu Mahligai merupakan hasil peliharaan lebah lokal oleh masyarakat Danau Lamo yang dipanen secara tradisional tanpa merusak lingkungan. Proses pemanenan dilakukan secara turun-temurun dengan kearifan lokal, menjaga kemurnian madu sekaligus melestarikan habitat lebah dan keseimbangan alam sekitar.
-                        </p>
-                        <div style="text-align: center; margin-top: 20px;">
-                            <?php if ($isLoggedIn): ?>
-                                <a href="pesan-umkm.php?produk=madu_mahligai" class="tombol-pesan-disini">
-                                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </a>
-                            <?php else: ?>
-                                <a href="login.php?redirect=<?php echo urlencode('pesan-umkm.php?produk=madu_mahligai'); ?>" class="tombol-pesan-disini">
-                                    <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
-                                </a>
-                            <?php endif; ?>
+                    <div class="item-gastro" data-keywords="tikar pandan bermotif estetika keterampilan dekorasi upacara">
+                        <div class="item-gastro-inner animate-pop-up delay-04s">
+                            <img src="asset/tikar.jpg" alt="Tikar Pandan Bermotif" />
+                            <h4>Tikar Pandan Bermotif</h4>
+                            <p>
+                                Tikar pandan memiliki berbagai macam motif yang melambangkan nilai estetika dan keterampilan tinggi pengrajinnya. Digunakan sebagai alas, dekorasi, atau simbol upacara adat.
+                            </p>
+                            <p><strong>Harga:</strong> Rp 80.000</p>
+                            <div class="button-container">
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-umkm.php?produk=tikar_pandan_bermotif" class="tombol-pesan-umkm">Pesan Produk</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-umkm.php?produk=tikar_pandan_bermotif" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -388,51 +248,29 @@ if ($isLoggedIn) {
 
         <section id="tradisi-lokal" class="bg-krem section-highlight">
             <div class="layar-dalam">
-                <h3 class="animate-slide-up">Tradisi Lokal</h3>
-                <p class="ringkasan animate-slide-up delay-05s">Saksikan dan pahami makna di balik tradisi-tradisi yang membentuk identitas masyarakat Danau Lamo.</p>
+                <h3 class="animate-slide-up">Produk Alam: Madu Mahligai</h3>
+                <p class="ringkasan animate-slide-up delay-05s">
+                    Madu asli dari lebah lokal yang dipanen secara tradisional.
+                </p>
                 <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro">
-                        <div class="youtube-container">
-                            <iframe
-                                src="https://www.youtube.com/embed/JF-sBLakP2M"
-                                title="Tradisi Tkud - Danau Lamo"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen>
-                            </iframe>
+                    <div class="item-gastro" data-keywords="madu mahligai lebah tradisional murni">
+                        <div class="item-gastro-inner animate-pop-up">
+                            <img src="asset/madu-m.jpg" alt="Madu Mahligai" />
+                            <h4>Madu Mahligai</h4>
+                            <p>
+                                Madu Mahligai merupakan hasil peliharaan lebah lokal oleh masyarakat Danau Lamo yang dipanen secara tradisional tanpa merusak lingkungan. Proses pemanenan dilakukan secara turun-temurun dengan kearifan lokal, menjaga kemurnian madu sekaligus melestarikan habitat lebah dan keseimbangan alam sekitar.
+                            </p>
+                            <p><strong>Harga:</strong> Rp 50.000 / 100 ml</p>
+                            <div class="button-container">
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-umkm.php?produk=madu_mahligai" class="tombol-pesan-umkm">Pesan Produk</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-umkm.php?produk=madu_mahligai" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                        <h4>Tradisi Tkud</h4>
-                        <p>
-                            Tkud adalah alat tiup tradisional khas Desa Danau Lamo, terbuat dari bambu dan dimainkan untuk menirukan suara burung ruak-ruak. Selain digunakan dalam praktik berburu, Tkud juga menjadi sarana hiburan malam hari dan interaksi sosial masyarakat.
-                        </p>
-                        <div style="text-align: center; margin-top: 15px;">
-                            <a href="https://youtu.be/JF-sBLakP2M?si=aKS8EjFE7sMlhY-o" target="_blank" class="tombol-tonton-video">Tonton di YouTube <i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="item-gastro">
-                        <div class="icon-placeholder tegak-tiang">
-                            <div class="content-badge">Tradisi</div>
-                            <div class="main-icon">🏗️</div>
-                            <div class="icon-title">Tegak Tiang Tuo</div>
-                            <div class="icon-subtitle">Upacara Pendirian Rumah Adat</div>
-                        </div>
-                        <h4>Tradisi Tegak Tiang Tuo</h4>
-                        <p>
-                            Upacara pendirian rumah atau bangunan tertentu. Dilakukan bersama warga sebagai simbol kekuatan dan kebersamaan dalam membangun fondasi kehidupan yang kokoh.
-                        </p>
-                    </div>
-
-                    <div class="item-gastro">
-                        <div class="icon-placeholder baselang">
-                            <div class="content-badge">Gotong Royong</div>
-                            <div class="main-icon">🤝</div>
-                            <div class="icon-title">Baselang</div>
-                            <div class="icon-subtitle">Tradisi Kerja Sama</div>
-                        </div>
-                        <h4>Tradisi Baselang</h4>
-                        <p>
-                            Tradisi gotong royong saat acara besar, seperti panen atau pesta adat. Menumbuhkan rasa solidaritas dan kerja sama antarwarga dalam semangat kebersamaan yang kuat.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -462,7 +300,6 @@ if ($isLoggedIn) {
                     <li><a href="https://www.instagram.com/danaumahligai" target="_blank"><i class="fab fa-instagram"></i> danaumahligai</a></li>
                     <li><a href="https://www.instagram.com/mahligaibudaya_" target="_blank"><i class="fab fa-instagram"></i> mahligaibudaya_</a></li>
                     <li><a href="https://www.instagram.com/official_gambang" target="_blank"><i class="fab fa-instagram"></i> official_gambang</a></li>
-                    <li><a href="https://www.instagram.com/kampungtradisional.official" target="_blank"><i class="fab fa-instagram"></i> kampungtradisional.official</a></li>
                     <li><a href="https://www.facebook.com/mahligaiheritageofficial" target="_blank"><i class="fab fa-facebook"></i> Mahligai Heritage</a></li>
                 </ul>
             </div>

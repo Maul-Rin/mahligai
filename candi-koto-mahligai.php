@@ -32,10 +32,7 @@ if ($isLoggedIn) {
 
             <div class="nav-links">
                 <a href="index.php">Beranda</a>
-                <a href="candi-koto-mahligai.php" class="active-candi">Candi</a> <?php if ($isLoggedIn): ?>
-                <?php else: ?>
-                    <a href="#" onclick="showCustomAlert('Silakan login terlebih dahulu untuk mengakses Tiket & UMKM'); return false;">Tiket & UMKM</a>
-                <?php endif; ?>
+                <a href="candi-koto-mahligai.php" class="active-candi">Candi</a>
             </div>
 
             <div class="user-section">
@@ -160,7 +157,6 @@ if ($isLoggedIn) {
                     <li><a href="#kanal">Kanal Kuno</a></li>
                     <li><a href="#candi">Candi</a></li>
                     <li><a href="#kearifan">Kearifan Lokal</a></li>
-                    <li><a href="tiket-umkm.php">Tiket & UMKM</a></li>
                     <li><a href="#lokasi">Lokasi</a></li>
                 </ul>
             </div>

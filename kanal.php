@@ -78,27 +78,8 @@ if ($isLoggedIn) {
             font-size: 1.1rem;
         }
 
-        /* Styling untuk tombol pesan yang sudah ada */
-        .tombol-pesan-kanal {
-            background: linear-gradient(135deg, #8b4513, #a0522d);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-        }
-
-        .tombol-pesan-kanal:hover {
-            background: linear-gradient(135deg, #6d3410, #8b4513);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-            color: white;
-        }
+        /* Styling untuk tombol pesan yang sudah ada (akan digantikan oleh tombol-pesan-umkm) */
+        /* .tombol-pesan-kanal { ... } */
 
         /* Container untuk tombol-tombol */
         .button-container {
@@ -120,8 +101,11 @@ if ($isLoggedIn) {
                 align-items: center;
             }
 
+            /* Pastikan tombol-pesan-umkm juga responsif */
             .tombol-youtube-kanal,
-            .tombol-pesan-kanal {
+            .tombol-pesan-kanal, /* tetap biarkan ini jika masih ada tombol yang pakai */
+            .tombol-pesan-gastro,
+            .tombol-pesan-umkm { /* Tambahkan tombol-pesan-umkm di sini untuk mobile responsif */
                 margin: 5px 0;
                 width: fit-content;
             }
@@ -143,13 +127,10 @@ if ($isLoggedIn) {
             <div class="nav-links">
                 <a href="index.php">Beranda</a>
                 <a href="kanal.php" class="active-kanal">Kanal Kuno</a>
-                <?php if (!$isLoggedIn): ?>
-                    <a href="#" onclick="showCustomAlert('Silakan login terlebih dahulu untuk mengakses Tiket & UMKM'); return false;">Tiket & UMKM</a>
-                <?php endif; ?>
             </div>
             <div class="user-section">
                 <?php if ($isLoggedIn): ?>
-                    <span class="user-name">&#128075; <?php echo htmlspecialchars($user['name']); ?></span>
+                    <span class="user-name">👋 <?php echo htmlspecialchars($user['name']); ?></span>
                     <a href="logout.php" class="logout-btn">Logout</a>
                 <?php else: ?>
                     <a href="login.php" class="logout-btn login-btn-custom">Login</a>
@@ -165,7 +146,7 @@ if ($isLoggedIn) {
                 <p class="ringkasan animate-fade-in delay-1s">Menelusuri jejak sejarah dan menikmati pengalaman wisata kanal bersejarah di Muaro Jambi</p>
                 <div class="search-container-kanal">
                     <input type="text" placeholder="Cari sejarah atau paket..." class="search-box-kanal" id="searchInputKanal" onkeypress="handleSearchKanal(event)" />
-                    <button type="button" class="search-btn-kanal" onclick="performSearchKanalFromButton()">&#128269;</button>
+                    <button type="button" class="search-btn-kanal" onclick="performSearchKanalFromButton()">🔍</button>
                 </div>
             </div>
         </section>
@@ -179,7 +160,6 @@ if ($isLoggedIn) {
                 <div class="grid-gastronomi grid-interactive">
                     <div class="item-gastro" data-keywords="jejak sejarah fungsi transportasi irigasi distribusi">
                         <div class="item-gastro-inner animate-pop-up">
-                            <!-- DIGANTI DARI IMG KE YOUTUBE VIDEO -->
                             <div class="youtube-container">
                                 <iframe
                                     src="https://www.youtube.com/embed/b0e3AC-rLQc"
@@ -217,9 +197,15 @@ if ($isLoggedIn) {
                             <p>
                                 Paket ini cocok untuk pengunjung yang ingin mencoba sensasi menyusuri kanal dalam waktu singkat. Perjalanan berdurasi ±15 menit menyusuri jalur utama dengan perahu tradisional sambil mendengar penjelasan singkat dari pemandu.
                             </p>
-                            <p><strong>Harga:</strong> Rp 15.000 – Rp 20.000 / orang</p>
+                            <p><strong>Harga:</strong> Rp 15.000 / orang</p>
                             <div class="button-container">
-                                <a href="pesan-tiket.php?jenis=paket_singkat" class="tombol-pesan-kanal">Pesan Tiket</a>
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-tiket.php?jenis=paket_singkat" class="tombol-pesan-umkm">Pesan Tiket</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-tiket.php?jenis=paket_singkat" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -232,7 +218,13 @@ if ($isLoggedIn) {
                             </p>
                             <p><strong>Harga:</strong> Rp 1.450.000 / per sesi (maks. 16 orang)</p>
                             <div class="button-container">
-                                <a href="pesan-tiket.php?jenis=meeting_boat" class="tombol-pesan-kanal">Pesan Tiket</a>
+                                <?php if ($isLoggedIn): ?>
+                                    <a href="pesan-tiket.php?jenis=paket_meeting_boat" class="tombol-pesan-umkm">Pesan Tiket</a>
+                                <?php else: ?>
+                                    <a href="login.php?redirect=pesan-tiket.php?jenis=paket_meeting_boat" class="tombol-pesan-gastro">
+                                        <i class="fas fa-sign-in-alt"></i> Login untuk Pesan
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -267,7 +259,6 @@ if ($isLoggedIn) {
                     <li><a href="https://www.instagram.com/danaumahligai" target="_blank"><i class="fab fa-instagram"></i> danaumahligai</a></li>
                     <li><a href="https://www.instagram.com/mahligaibudaya_" target="_blank"><i class="fab fa-instagram"></i> mahligaibudaya_</a></li>
                     <li><a href="https://www.instagram.com/official_gambang" target="_blank"><i class="fab fa-instagram"></i> official_gambang</a></li>
-                    <li><a href="https://www.instagram.com/kampungtradisional.official" target="_blank"><i class="fab fa-instagram"></i> kampungtradisional.official</a></li>
                     <li><a href="https://www.facebook.com/mahligaiheritageofficial" target="_blank"><i class="fab fa-facebook"></i> Mahligai Heritage</a></li>
                 </ul>
             </div>
