@@ -284,7 +284,7 @@ try {
                             <img src="asset/madu.jpg" alt="Madu Mahligai">
                             <h4>Madu Mahligai</h4>
                             <p>Madu Mahligai merupakan hasil peliharaan lebah lokal oleh masyarakat Danau Lamo yang dipanen secara tradisional tanpa merusak lingkungan. Proses pemanenan dilakukan secara turun-temurun dengan kearifan lokal.</p>
-                            <div class="price-display">Harga: Rp 50.000 / 250 ml</div>
+                            <div class="price-display">Harga: Rp 50.000 / 100 ml</div>
                             <div class="button-container">
                                 <a href="pesan-umkm.php?produk=madu_mahligai" class="tombol-pesan">Pesan Produk</a>
                             </div>
