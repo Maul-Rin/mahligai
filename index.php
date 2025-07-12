@@ -408,7 +408,7 @@ if ($isLoggedIn) {
                         <div class="item-kearifan">
                             <div class="youtube-container">
                                 <iframe
-                                    src="https://www.youtube.com/embed/your_video_id_here"
+                                    src="https://www.youtube.com/embed/8-g0MR5Wc1w?si=vihRHxrXyb_3zjRw"
                                     title="Begambang Danau Lamo - Musik Tradisional Gambangan"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen>
@@ -447,7 +447,7 @@ if ($isLoggedIn) {
                         <div class="item-sorotan">
                             <img src="asset/Mentri.jpg" alt="Istri Gubernur" />
                             <h4>Menteri Desa & PDT</h4>
-                            <p>Menteri Desa & PDT, Yandri Susanto, berkungjung ke Desa Danau Lamo dan mencoba berbagai kearifan lokal yang ada.</p>
+                            <p>Menteri Desa & PDT, Yandri Susanto, berkunjung ke Desa Danau Lamo dan mencoba berbagai kearifan lokal yang ada.</p>
                         </div>
                         <div class="item-sorotan">
                             <img src="asset/najwa.jpg" alt="Najwa Shihab" />

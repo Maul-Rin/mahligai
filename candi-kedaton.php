@@ -22,6 +22,44 @@ if ($isLoggedIn) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS for Read More functionality - Localized to this page */
+        p.short-desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines initially */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        p.full-desc {
+            display: none; /* Hidden by default */
+        }
+
+        .read-more-btn {
+            background-color: transparent;
+            border: none;
+            color: #c82333; /* Red color as seen in your gastronomy page */
+            cursor: pointer;
+            padding: 5px 0;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block; /* Ensures button is on its own line */
+            width: fit-content; /* Adjusts width to content */
+            margin-left: auto; /* Center the button */
+            margin-right: auto; /* Center the button */
+        }
+
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Adjustments for default <p> tags in item-gastro to work with short/full desc */
+        .item-gastro p {
+            min-height: 70px; /* Adjust as needed for consistent card height */
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +74,7 @@ if ($isLoggedIn) {
 
             <div class="user-section">
                 <?php if ($isLoggedIn): ?>
-                    <span class="user-name">&#128075; <?php echo htmlspecialchars($user['name']); ?></span>
+                    <span class="user-name">👋 <?php echo htmlspecialchars($user['name']); ?></span>
                     <a href="logout.php" class="logout-btn">Logout</a>
                 <?php else: ?>
                     <a href="login.php" class="logout-btn login-btn-custom">Login</a>
@@ -51,15 +89,17 @@ if ($isLoggedIn) {
                 <h3 class="animate-fade-in">Candi Kedaton</h3>
                 <p class="ringkasan animate-fade-in delay-1s">Menelusuri kejayaan arsitektur dan spiritualitas kuno di situs Candi Kedaton, Muaro Jambi.</p>
                 <img src="asset/candi-kedaton.jpeg" alt="Candi Kedaton" class="gambar-deskripsi-penuh" />
-                <p style="margin-top: 20px;">
+                <p class="short-desc" style="margin-top: 20px;">
                     Candi Kedaton adalah salah satu situs utama dalam kompleks percandian Muaro Jambi yang luas, terletak di Desa Muaro Jambi, Kecamatan Marosebo. Situs ini menyimpan berbagai misteri sejarah dari masa lampau, serta menjadi saksi bisu kejayaan peradaban Buddha-Hindu di Nusantara. Terletak sekitar 1500 meter di sebelah barat Candi Gedong II, Candi Kedaton menampilkan struktur arsitektur yang luar biasa lengkap, dengan dinding keliling berukuran 200 x 230 meter, dan lebih dari sepuluh struktur reruntuhan candi di dalamnya.
                 </p>
-                <p>
+                <p class="full-desc">
+                    Candi Kedaton adalah salah satu situs utama dalam kompleks percandian Muaro Jambi yang luas, terletak di Desa Muaro Jambi, Kecamatan Marosebo. Situs ini menyimpan berbagai misteri sejarah dari masa lampau, serta menjadi saksi bisu kejayaan peradaban Buddha-Hindu di Nusantara. Terletak sekitar 1500 meter di sebelah barat Candi Gedong II, Candi Kedaton menampilkan struktur arsitektur yang luar biasa lengkap, dengan dinding keliling berukuran 200 x 230 meter, dan lebih dari sepuluh struktur reruntuhan candi di dalamnya.
+                    <br><br>
                     Yang membedakan Candi Kedaton dari kompleks lainnya adalah keberadaan makara bertuliskan aksara Jawa Kuno yang menyebutkan nama "Mpu Kusuma", yang ditafsirkan sebagai tokoh spiritual yang menggunakan kawasan ini sebagai tempat meditasi. Temuan arkeologis lainnya seperti sumur tua, belanga besar dari perunggu, dan berbagai ornamen batu bata menunjukkan adanya aktivitas biara Buddha (vihāra) yang signifikan di masa lalu.
-                </p>
-                <p>
+                    <br><br>
                     Meskipun belum sepopuler Borobudur, keunikan dan keluasan kawasan Candi Kedaton menjadikannya destinasi penting bagi pecinta sejarah, budaya, dan arkeologi. Kunjungan ke sini bukan hanya menyaksikan struktur fisik, tetapi juga merenungi warisan spiritual dan intelektual masa silam.
                 </p>
+                <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
             </div>
         </section>
 
@@ -69,49 +109,69 @@ if ($isLoggedIn) {
                 <p class="ringkasan animate-slide-up delay-05s">Menampilkan lima aspek penting dari Candi Kedaton: arsitektur, gapura, makara, sumur tua, dan belanga perunggu.</p>
 
                 <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="arsitektur candi kedaton terbesar pondasi tinggi bata kerakal">
                         <div class="item-gastro-inner animate-pop-up">
                             <img src="asset/arsitektur-kedaton.png" alt="Arsitektur Candi Kedaton" />
                             <h4>Arsitektur Candi</h4>
-                            <p>
+                            <p class="short-desc">
                                 Bangunan induk Candi Kedaton adalah yang terbesar di kompleks Muaro Jambi. Kaki bangunan setinggi 7,2 meter dipenuhi batu kerakal untuk kestabilan struktur, menunjukkan kecerdasan teknik pada masa itu.
                             </p>
+                            <p class="full-desc">
+                                Bangunan induk Candi Kedaton adalah yang terbesar di kompleks Muaro Jambi. Kaki bangunan setinggi 7,2 meter dipenuhi batu kerakal untuk kestabilan struktur, menunjukkan kecerdasan teknik pada masa itu, serta kehebatan arsitek masa lalu dalam membangun struktur monumental.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="gapura pintu masuk makara monyet tanduk simbolisme">
                         <div class="item-gastro-inner animate-pop-up delay-02s">
                             <img src="asset/pintu-masuk.png" alt="Gapura Candi Kedaton" />
                             <h4>Gapura Pintu Masuk</h4>
-                            <p>
+                            <p class="short-desc">
                                 Gapura utama di sisi utara dikelilingi empat makara. Ambang pintu tidak sejajar dengan candi utama, menunjukkan simbolisme arsitektural khas. Salah satu makara memiliki pahatan kepala binatang mirip monyet bertanduk.
                             </p>
+                            <p class="full-desc">
+                                Gapura utama di sisi utara dikelilingi empat makara. Ambang pintu tidak sejajar dengan candi utama, menunjukkan simbolisme arsitektural khas. Salah satu makara memiliki pahatan kepala binatang mirip monyet bertanduk, menambah keunikan dan misteri pada situs ini.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="makara aksara jawa kuno mpu kusuma meditasi">
                         <div class="item-gastro-inner animate-pop-up delay-04s">
                             <img src="asset/arca.png" alt="Makara dengan Aksara Jawa" />
                             <h4>Makara Bertuliskan Aksara Jawa Kuno</h4>
-                            <p>
+                            <p class="short-desc">
                                 Dua makara di dalam gapura bertuliskan aksara Jawa Kuno. Salah satunya berbunyi "Pamursitanira Mpu Kusuma", diartikan sebagai tempat mengheningkan cipta (meditasi) Mpu Kusuma.
                             </p>
+                            <p class="full-desc">
+                                Dua makara di dalam gapura bertuliskan aksara Jawa Kuno. Salah satunya berbunyi "Pamursitanira Mpu Kusuma", diartikan sebagai tempat mengheningkan cipta (meditasi) Mpu Kusuma. Keberadaan makara ini memberikan petunjuk penting tentang fungsi dan tokoh spiritual yang terkait dengan candi.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="sumur tua batu bata suci masyarakat tradisional">
                         <div class="item-gastro-inner animate-pop-up delay-06s">
                             <img src="asset/sumur.jpg" alt="Sumur Tua Candi Kedaton" />
                             <h4>Sumur Tua</h4>
-                            <p>
+                            <p class="short-desc">
                                 Sebuah sumur dari susunan batu bata ditemukan di timur Candi Kedaton. Airnya dianggap suci dan masih digunakan secara tradisional oleh masyarakat sekitar.
                             </p>
+                            <p class="full-desc">
+                                Sebuah sumur dari susunan batu bata ditemukan di timur Candi Kedaton. Airnya dianggap suci dan masih digunakan secara tradisional oleh masyarakat sekitar untuk ritual dan keperluan sehari-hari, menunjukkan kesinambungan tradisi.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="belanga perunggu memasak vihara komunal keagamaan">
                         <div class="item-gastro-inner animate-pop-up delay-08s">
                             <img src="asset/belanga.png" alt="Belanga Besar" />
                             <h4>Belanga Perunggu</h4>
-                            <p>
+                            <p class="short-desc">
                                 Ditemukan tahun 1994, belanga perunggu ini beratnya 160 kg dan tinggi 67 cm. Berfungsi sebagai alat memasak di vihāra, menandakan kehidupan komunal keagamaan.
                             </p>
+                            <p class="full-desc">
+                                Ditemukan tahun 1994, belanga perunggu ini beratnya 160 kg dan tinggi 67 cm. Berfungsi sebagai alat memasak di vihāra, menandakan kehidupan komunal keagamaan dan aktivitas sehari-hari para penghuni biara di masa lampau.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
                 </div>
@@ -163,65 +223,55 @@ if ($isLoggedIn) {
         </div>
     </footer>
 
-    <style>
-        /* Tambahkan atau perbarui CSS berikut di style.css Anda */
-        footer .social-links {
-            list-style: none;
-            /* Hapus bullet default */
-            padding: 0;
-            margin: 0;
+    <script>
+        // JavaScript for Read More functionality - Localized to this page
+        function toggleReadMore(button) {
+            const parentElement = button.parentElement; // Get the direct parent (e.g., .item-gastro-inner or .layar-dalam)
+            const shortDesc = parentElement.querySelector('.short-desc');
+            const fullDesc = parentElement.querySelector('.full-desc');
+
+            if (shortDesc.style.display === 'none') {
+                // Currently showing full description, switch to short
+                shortDesc.style.display = '-webkit-box'; // Re-apply truncated style
+                fullDesc.style.display = 'none';
+                button.textContent = 'Selengkapnya';
+            } else {
+                // Currently showing short description, switch to full
+                shortDesc.style.display = 'none';
+                fullDesc.style.display = 'block';
+                button.textContent = 'Sembunyikan';
+            }
         }
 
-        footer .social-links li {
-            margin-bottom: 8px;
-            /* Jarak antar item */
+        // Search functions (copied from kategori-gastronomi.php, adapted for this page's items)
+        function handleSearchCandi(event) {
+            if (event.key === 'Enter') {
+                performSearchCandi();
+            }
         }
 
-        footer .social-links a {
-            color: inherit;
-            /* Gunakan warna teks dari parent */
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            /* Jarak antara ikon dan teks */
+        function performSearchCandiFromButton() {
+            performSearchCandi();
         }
 
-        footer .social-links a:hover {
-            color: #d2691e;
-            /* Warna hover yang cocok dengan tema */
-        }
+        function performSearchCandi() {
+            const searchValue = document.getElementById('searchInputCandi').value.toLowerCase();
+            const candiItems = document.querySelectorAll('.item-gastro'); // Adjust selector if needed
 
-        footer .social-links a i {
-            font-size: 1.2em;
-            /* Ukuran ikon */
-        }
+            candiItems.forEach(item => {
+                const keywords = item.getAttribute('data-keywords') ? item.getAttribute('data-keywords').toLowerCase() : '';
+                const title = item.querySelector('h4') ? item.querySelector('h4').textContent.toLowerCase() : '';
+                const shortDesc = item.querySelector('.short-desc') ? item.querySelector('.short-desc').textContent.toLowerCase() : '';
+                const fullDesc = item.querySelector('.full-desc') ? item.querySelector('.full-desc').textContent.toLowerCase() : '';
 
-        /* Styling untuk Peta Situs (jika belum ada) */
-        footer div:last-child ul {
-            /* Menargetkan ul di peta situs */
-            list-style: none;
-            padding: 0;
-            margin: 0;
+                if (keywords.includes(searchValue) || title.includes(searchValue) || shortDesc.includes(searchValue) || fullDesc.includes(searchValue)) {
+                    item.style.display = 'block'; // Show the item
+                } else {
+                    item.style.display = 'none'; // Hide the item
+                }
+            });
         }
-
-        footer div:last-child ul li {
-            margin-bottom: 8px;
-        }
-
-        footer div:last-child ul li a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer div:last-child ul li a:hover {
-            color: #d2691e;
-        }
-    </style>
-
-    <script src="script.js"></script>
+    </script>
 </body>
 
 </html>

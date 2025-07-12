@@ -22,6 +22,44 @@ if ($isLoggedIn) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS for Read More functionality - Localized to this page */
+        p.short-desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines initially */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        p.full-desc {
+            display: none; /* Hidden by default */
+        }
+
+        .read-more-btn {
+            background-color: transparent;
+            border: none;
+            color: #c82333; /* Red color as seen in your gastronomy page */
+            cursor: pointer;
+            padding: 5px 0;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block; /* Ensures button is on its own line */
+            width: fit-content; /* Adjusts width to content */
+            margin-left: auto; /* Center the button */
+            margin-right: auto; /* Center the button */
+        }
+
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Adjustments for default <p> tags in item-gastro to work with short/full desc */
+        .item-gastro p {
+            min-height: 70px; /* Adjust as needed for consistent card height */
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +75,7 @@ if ($isLoggedIn) {
 
             <div class="user-section">
                 <?php if ($isLoggedIn): ?>
-                    <span class="user-name">&#128075; <?php echo htmlspecialchars($user['name']); ?></span>
+                    <span class="user-name">👋 <?php echo htmlspecialchars($user['name']); ?></span>
                     <a href="logout.php" class="logout-btn">Logout</a>
                 <?php else: ?>
                     <a href="login.php" class="logout-btn login-btn-custom">Login</a>
@@ -52,12 +90,15 @@ if ($isLoggedIn) {
                 <h3 class="animate-fade-in">Candi Koto Mahligai</h3>
                 <p class="ringkasan animate-fade-in delay-1s">Situs candi penting dengan nilai sejarah dan spiritual yang tinggi di Muaro Jambi.</p>
                 <img src="asset/koto.jpg" alt="Candi Koto Mahligai" class="gambar-deskripsi-penuh" />
-                <p style="margin-top: 20px;">
+                <p class="short-desc" style="margin-top: 20px;">
                     Candi Koto Mahligai merupakan salah satu peninggalan penting dari masa kejayaan Kerajaan Melayu Kuno di kawasan Muaro Jambi. Terletak di Desa Danau Lamo, candi ini dipercaya menjadi pusat pendidikan dan spiritual agama Buddha pada abad ke-7 hingga ke-9 Masehi. Posisi strategisnya dekat dengan Sungai Batanghari memperkuat dugaan bahwa candi ini menjadi bagian dari jalur perdagangan dan jaringan keagamaan internasional.
                 </p>
-                <p>
-                    Struktur bangunan utama terdiri dari bata merah dengan teknik penyusunan tanpa semen. Area candi sempat tertutup semak belukar, namun kini telah dibersihkan dan ditata sebagai situs yang ramah pengunjung. Lingkungan sekitarnya yang rimbun membuat suasana semakin tenang dan reflektif.
+                <p class="full-desc">
+                    Candi Koto Mahligai merupakan salah satu peninggalan penting dari masa kejayaan Kerajaan Melayu Kuno di kawasan Muaro Jambi. Terletak di Desa Danau Lamo, candi ini dipercaya menjadi pusat pendidikan dan spiritual agama Buddha pada abad ke-7 hingga ke-9 Masehi. Posisi strategisnya dekat dengan Sungai Batanghari memperkuat dugaan bahwa candi ini menjadi bagian dari jalur perdagangan dan jaringan keagamaan internasional.
+                    <br><br>
+                    Struktur bangunan utama terdiri dari bata merah dengan teknik penyusunan tanpa semen. Area candi sempat tertutup semak belukar, namun kini telah dibersihkan dan ditata sebagai situs yang ramah pengunjung. Lingkungan sekitarnya yang rimbun membuat suasana semakin tenang dan reflektif, menjadikannya tempat yang ideal untuk meditasi dan belajar sejarah.
                 </p>
+                <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
             </div>
         </section>
 
@@ -66,40 +107,56 @@ if ($isLoggedIn) {
                 <h3 class="animate-slide-up">Arkeologi & Temuan</h3>
                 <p class="ringkasan animate-slide-up delay-05s">Beragam elemen penting yang ditemukan di sekitar Candi Mahligai</p>
                 <div class="grid-gastronomi grid-interactive">
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="struktur utama candi meditasi biksu bata merah">
                         <div class="item-gastro-inner animate-pop-up">
                             <img src="asset/struktur.jpeg" alt="Struktur utama candi" />
                             <h4>Struktur Utama</h4>
-                            <p>
+                            <p class="short-desc">
                                 Struktur utama candi berbentuk persegi dengan pondasi tinggi dari bata merah. Bangunan ini kemungkinan digunakan sebagai tempat meditasi para biksu.
                             </p>
+                            <p class="full-desc">
+                                Struktur utama candi berbentuk persegi dengan pondasi tinggi dari bata merah. Bangunan ini kemungkinan digunakan sebagai tempat meditasi para biksu, menunjukkan kompleksitas arsitektur dan fungsi spiritualnya di masa lampau.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="reruntuhan bata bangunan pendukung balai ruang pembelajaran">
                         <div class="item-gastro-inner animate-pop-up delay-02s">
                             <img src="asset/reruntuhan.png" alt="Reruntuhan bata candi" />
                             <h4>Reruntuhan Pelengkap</h4>
-                            <p>
+                            <p class="short-desc">
                                 Beberapa struktur runtuh di sekitar candi menunjukkan bahwa dulunya kompleks ini memiliki bangunan pendukung seperti balai atau ruang pembelajaran.
                             </p>
+                            <p class="full-desc">
+                                Beberapa struktur runtuh di sekitar candi menunjukkan bahwa dulunya kompleks ini memiliki bangunan pendukung seperti balai atau ruang pembelajaran, menegaskan peran Candi Koto Mahligai sebagai pusat keagamaan dan pendidikan yang lengkap.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="arca batu fragmen buddha mahayana ibadah">
                         <div class="item-gastro-inner animate-pop-up delay-04s">
                             <img src="asset/arca-koto.png" alt="Fragmen arca Buddha" />
                             <h4>Arca Batu</h4>
-                            <p>
+                            <p class="short-desc">
                                 Fragmen arca ditemukan di sekitar kompleks, memperkuat indikasi bahwa candi ini merupakan pusat ibadah Buddha Mahayana.
                             </p>
+                            <p class="full-desc">
+                                Fragmen arca ditemukan di sekitar kompleks, memperkuat indikasi bahwa candi ini merupakan pusat ibadah Buddha Mahayana, serta menjadi bukti keberadaan komunitas Buddha yang berkembang pesat di wilayah ini.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
-                    <div class="item-gastro">
+                    <div class="item-gastro" data-keywords="lingkungan asri ketenangan spiritual edukatif pohon rindang">
                         <div class="item-gastro-inner animate-pop-up delay-06s">
                             <img src="asset/lingkungan.png" alt="Lingkungan candi" />
                             <h4>Lingkungan Asri</h4>
-                            <p>
+                            <p class="short-desc">
                                 Lokasi candi dikelilingi pohon rindang yang menciptakan ketenangan, cocok untuk kegiatan spiritual dan edukatif.
                             </p>
+                            <p class="full-desc">
+                                Lokasi candi dikelilingi pohon rindang yang menciptakan ketenangan, cocok untuk kegiatan spiritual dan edukatif. Keindahan alam di sekitarnya menambah nilai historis dan menenangkan bagi setiap pengunjung yang datang.
+                            </p>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
                         </div>
                     </div>
                 </div>
@@ -115,9 +172,13 @@ if ($isLoggedIn) {
                     <li>Termasuk dalam kawasan Cagar Budaya Nasional.</li>
                     <li>Sudah tersedia fasilitas umum seperti toilet, jalur setapak, dan tempat sampah.</li>
                 </ul>
-                <p style="margin-top: 20px;">
+                <p class="short-desc" style="margin-top: 20px;">
                     Waktu terbaik untuk berkunjung adalah pagi atau sore hari. Disarankan menggunakan alas kaki yang nyaman dan membawa perlindungan cuaca. Wisata ke Candi Mahligai memberikan pengalaman mendalam bagi pecinta sejarah dan budaya.
                 </p>
+                 <p class="full-desc">
+                    Waktu terbaik untuk berkunjung adalah pagi atau sore hari untuk menghindari terik matahari dan merasakan suasana yang lebih syahdu. Disarankan menggunakan alas kaki yang nyaman dan membawa perlindungan cuaca seperti topi atau payung. Wisata ke Candi Mahligai memberikan pengalaman mendalam bagi pecinta sejarah dan budaya, serta kesempatan untuk merenung di tengah ketenangan alam.
+                </p>
+                <button class="read-more-btn" onclick="toggleReadMore(this)">Selengkapnya</button>
             </div>
         </section>
     </main>
@@ -166,65 +227,56 @@ if ($isLoggedIn) {
         </div>
     </footer>
 
-    <style>
-        /* Tambahkan atau perbarui CSS berikut di style.css Anda */
-        footer .social-links {
-            list-style: none;
-            /* Hapus bullet default */
-            padding: 0;
-            margin: 0;
+    <script>
+        // JavaScript for Read More functionality - Localized to this page
+        function toggleReadMore(button) {
+            const parentElement = button.parentElement; // Get the direct parent (e.g., .item-gastro-inner or .layar-dalam)
+            const shortDesc = parentElement.querySelector('.short-desc');
+            const fullDesc = parentElement.querySelector('.full-desc');
+
+            if (shortDesc.style.display === 'none') {
+                // Currently showing full description, switch to short
+                shortDesc.style.display = '-webkit-box'; // Re-apply truncated style
+                fullDesc.style.display = 'none';
+                button.textContent = 'Selengkapnya';
+            } else {
+                // Currently showing short description, switch to full
+                shortDesc.style.display = 'none';
+                fullDesc.style.display = 'block';
+                button.textContent = 'Sembunyikan';
+            }
         }
 
-        footer .social-links li {
-            margin-bottom: 8px;
-            /* Jarak antar item */
+        // Search functions (copied from kategori-gastronomi.php, adapted for this page's items)
+        function handleSearchCandi(event) {
+            if (event.key === 'Enter') {
+                performSearchCandi();
+            }
         }
 
-        footer .social-links a {
-            color: inherit;
-            /* Gunakan warna teks dari parent */
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            /* Jarak antara ikon dan teks */
+        function performSearchCandiFromButton() {
+            performSearchCandi();
         }
 
-        footer .social-links a:hover {
-            color: #d2691e;
-            /* Warna hover yang cocok dengan tema */
-        }
+        function performSearchCandi() {
+            const searchValue = document.getElementById('searchInputCandi').value.toLowerCase();
+            // Select all relevant items on this page
+            const candiItems = document.querySelectorAll('.item-gastro'); // Adjust selector if needed
 
-        footer .social-links a i {
-            font-size: 1.2em;
-            /* Ukuran ikon */
-        }
+            candiItems.forEach(item => {
+                const keywords = item.getAttribute('data-keywords') ? item.getAttribute('data-keywords').toLowerCase() : '';
+                const title = item.querySelector('h4') ? item.querySelector('h4').textContent.toLowerCase() : '';
+                const shortDesc = item.querySelector('.short-desc') ? item.querySelector('.short-desc').textContent.toLowerCase() : '';
+                const fullDesc = item.querySelector('.full-desc') ? item.querySelector('.full-desc').textContent.toLowerCase() : '';
 
-        /* Styling untuk Peta Situs (jika belum ada) */
-        footer div:last-child ul {
-            /* Menargetkan ul di peta situs */
-            list-style: none;
-            padding: 0;
-            margin: 0;
+                if (keywords.includes(searchValue) || title.includes(searchValue) || shortDesc.includes(searchValue) || fullDesc.includes(searchValue)) {
+                    item.style.display = 'block'; // Show the item
+                } else {
+                    item.style.display = 'none'; // Hide the item
+                }
+            });
         }
-
-        footer div:last-child ul li {
-            margin-bottom: 8px;
-        }
-
-        footer div:last-child ul li a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer div:last-child ul li a:hover {
-            color: #d2691e;
-        }
-    </style>
-
-    <script src="script.js"></script>
+    </script>
 </body>
 
 </html>

@@ -13,24 +13,54 @@ require_once 'koneksi.php';
 // Get analytics data
 try {
     // Monthly sales data for chart
+    // COMBINED query for both pesan_tiket and pesan_umkm
     $stmt = $pdo->query("
-        SELECT 
+        SELECT
             DATE_FORMAT(created_at, '%Y-%m') as month,
             COUNT(*) as total_orders,
             SUM(total_harga) as total_revenue
-        FROM pesan_tiket 
+        FROM pesan_tiket
         WHERE created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
         GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+
+        UNION ALL
+
+        SELECT
+            DATE_FORMAT(created_at, '%Y-%m') as month,
+            COUNT(*) as total_orders,
+            SUM(total_akhir) as total_revenue
+        FROM pesan_umkm
+        WHERE created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+        GROUP BY DATE_FORMAT(created_at, '%Y-%m')
+
         ORDER BY month ASC
     ");
-    $monthly_data = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+    $monthly_data_raw = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+
+    // Aggregate monthly data (summing up orders and revenue for the same month from both sources)
+    $monthly_data = [];
+    foreach ($monthly_data_raw as $row) {
+        $month = $row['month'];
+        if (!isset($monthly_data[$month])) {
+            $monthly_data[$month] = [
+                'month' => $month,
+                'total_orders' => 0,
+                'total_revenue' => 0
+            ];
+        }
+        $monthly_data[$month]['total_orders'] += $row['total_orders'];
+        $monthly_data[$month]['total_revenue'] += $row['total_revenue'];
+    }
+    // Re-index to a simple array for JSON encoding
+    $monthly_data = array_values($monthly_data);
+
 
     // Top selling tickets
     $stmt = $pdo->query("
         SELECT jenis_tiket, COUNT(*) as total_sold, SUM(total_harga) as revenue
-        FROM pesan_tiket 
-        GROUP BY jenis_tiket 
-        ORDER BY total_sold DESC 
+        FROM pesan_tiket
+        GROUP BY jenis_tiket
+        ORDER BY total_sold DESC
         LIMIT 5
     ");
     $top_tickets = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
@@ -38,19 +68,19 @@ try {
     // Top UMKM products
     $stmt = $pdo->query("
         SELECT produk, COUNT(*) as total_sold, SUM(total_akhir) as revenue
-        FROM pesan_umkm 
-        GROUP BY produk 
-        ORDER BY total_sold DESC 
+        FROM pesan_umkm
+        GROUP BY produk
+        ORDER BY total_sold DESC
         LIMIT 5
     ");
     $top_umkm = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
 
     // Recent activity
     $stmt = $pdo->query("
-        (SELECT 'tiket' as type, jenis_tiket as item, total_harga as amount, created_at 
+        (SELECT 'tiket' as type, jenis_tiket as item, total_harga as amount, created_at
          FROM pesan_tiket ORDER BY created_at DESC LIMIT 5)
         UNION ALL
-        (SELECT 'umkm' as type, produk as item, total_akhir as amount, created_at 
+        (SELECT 'umkm' as type, produk as item, total_akhir as amount, created_at
          FROM pesan_umkm ORDER BY created_at DESC LIMIT 5)
         ORDER BY created_at DESC LIMIT 10
     ");
@@ -83,7 +113,6 @@ try {
 
 <body>
     <div class="admin-container">
-        <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="sidebar-header">
                 <a href="index.php" class="sidebar-logo">Mahligai Heritage</a>
@@ -99,9 +128,7 @@ try {
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <main class="admin-main">
-            <!-- Header -->
             <header class="admin-header">
                 <div class="header-left">
                     <button class="mobile-menu-btn" onclick="toggleSidebar()">
@@ -118,7 +145,6 @@ try {
                 </div>
             </header>
 
-            <!-- Analytics Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon" style="background-color: #8b4513;">
@@ -162,9 +188,7 @@ try {
                 </div>
             </div>
 
-            <!-- Charts Section -->
             <div class="analytics-grid">
-                <!-- Monthly Sales Chart -->
                 <section class="admin-section chart-section">
                     <h2 class="section-title">
                         <i class="fas fa-chart-line"></i>
@@ -175,7 +199,6 @@ try {
                     </div>
                 </section>
 
-                <!-- Top Products -->
                 <section class="admin-section">
                     <h2 class="section-title">
                         <i class="fas fa-star"></i>
@@ -198,9 +221,7 @@ try {
                 </section>
             </div>
 
-            <!-- Bottom Section -->
             <div class="analytics-grid">
-                <!-- UMKM Products -->
                 <section class="admin-section">
                     <h2 class="section-title">
                         <i class="fas fa-shopping-cart"></i>
@@ -222,7 +243,6 @@ try {
                     </div>
                 </section>
 
-                <!-- Recent Activity -->
                 <section class="admin-section">
                     <h2 class="section-title">
                         <i class="fas fa-clock"></i>
@@ -249,7 +269,6 @@ try {
         </main>
     </div>
 
-    <!-- Sidebar Overlay for Mobile -->
     <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <script>
